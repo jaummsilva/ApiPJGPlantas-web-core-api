@@ -37,9 +37,8 @@ namespace ApiPJGPlantas.Controllers
 
 
         [HttpGet("{id}")]
-        [Produces("application/json")]
         [Consumes("application/json")]
-        public async Task<ActionResult<Planta>> GetPlanta([FromBody] int id)
+        public async Task<ActionResult<Planta>> GetPlanta(int id)
             {
                 var planta = await _context.Plantas.FindAsync(id);
 
@@ -55,7 +54,7 @@ namespace ApiPJGPlantas.Controllers
             // To protect from overposting attacks, enable the specific properties you want to bind to, for
             // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
             [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlanta([FromForm] int id, Planta planta)
+        public async Task<IActionResult> PutPlanta(int id, Planta planta)
             {
                 if (id != planta.Id)
                 {
@@ -96,10 +95,9 @@ namespace ApiPJGPlantas.Controllers
             }
 
             // DELETE: api/Plantas/5
-            [HttpDelete("{id}")]
-        [Produces("application/json")]
+        [HttpDelete("{id}")]
         [Consumes("application/json")]
-        public async Task<ActionResult<Planta>> DeletePlanta([FromForm] int id)
+        public async Task<ActionResult<Planta>> DeletePlanta( int id)
             {
                 var planta = await _context.Plantas.FindAsync(id);
                 if (planta == null)
